@@ -1,0 +1,20 @@
+﻿body {
+}
+
+div.profileform
+{
+
+    float:left;
+}
+
+div.profilelinks 
+{
+    float:right;
+}
+
+table.test
+{
+    border:double;
+    border-color:red;
+
+}

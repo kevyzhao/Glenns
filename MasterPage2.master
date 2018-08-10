@@ -1,0 +1,264 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage2.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+
+<head runat="server">
+    <title>Glenn's</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="~/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+    <link href="layout/styles/mystyles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <form id="form1" runat="server">
+
+
+        <%--LOGIN AND SEARCH BAR--%>
+
+        <div class="wrapper row0">
+            <div id="topbar" class="hoc clear">
+
+                <div class="fl_left">
+
+                    <ul class="nospace inline pushright">
+                        <asp:LoginView ID="LoginView1" runat="server">
+
+                            <AnonymousTemplate>
+                                <li><i class="fa fa-user"></i><a href="~/Account/Register.aspx" runat="server">New User</a></li>
+                                <li><i class="fa fa-sign-in"></i><a href="~/Account/Login.aspx" runat="server">Login</a></li>
+                            </AnonymousTemplate>
+
+                            <LoggedInTemplate>
+                                <li>Logged In As:
+                                    <asp:HyperLink ID="loggingin" NavigateUrl="~/Account/Profile.aspx" runat="server">
+                                        <asp:LoginName ID="LoginName1" runat="server" />
+                                    </asp:HyperLink>
+                                    |
+                                    <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Account/Login.aspx" OnLoggingOut="LoginStatus1_LoggingOut" />
+                                </li>
+                            </LoggedInTemplate>
+                        </asp:LoginView>
+
+
+
+                        <%--Uncomplete Need to add login page--%>
+                        <%--<li><i class="fa fa-sign-in"></i> <a href="~/Login.aspx" runat="server">Login</a></li>--%>
+                        <%--Uncomplete Need to add new user page--%>
+                        <%--<li><i class="fa fa-user"></i> <a href="NewUser.aspx">New User</a></li>--%>
+                    </ul>
+
+
+                </div>
+                <div class="fl_right">
+                    <div class="clear" method="post" action="#">
+
+                        <a href="~/ViewCart.aspx" runat="server">Cart -
+                            <asp:Label ID="lblAmount" runat="server">$0</asp:Label>
+                            <i class="fa fa-shopping-cart"></i>
+                            <asp:Label ID="lblCount" runat="server">0</asp:Label></a>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <%--   NAV BAR--%>
+
+        <div class="wrapper row1">
+            <header id="header" class="hoc clear">
+
+                <div id="logo" class="fl_left">
+
+                    <h1><a href="~/Default.aspx" runat="server">Glenn's</a></h1>
+                    <p>Eletric Motor & Supply Inc.</p>
+                </div>
+
+                <nav id="mainav" class="fl_right">
+                    <ul class="clear">
+                        <li class="active"><a href="~/Default.aspx" runat="server">Home</a></li>
+                        <li><a href="~/CategoriesPage.aspx" runat="server">Products</a></li>
+                        <li><a href="~/ContactUs.aspx" runat="server">Contact Us</a></li>
+                        <asp:LoginView ID="LoginView2" runat="server">
+                            <RoleGroups>
+                                <asp:RoleGroup Roles="admin">
+                                    <ContentTemplate>
+                                        <li><a class="drop" href="#">Admin</a>
+                                            <ul>
+                                                <li><a runat="server" href="~/Admin/CategoryManager.aspx">Category Manager</a></li>
+                                                <li><a runat="server" href="~/Admin/ProductManager.aspx">Product Manager</a></li>
+                                                <li><a runat="server" href="~/Admin/Response.aspx">Customer Response Manager</a></li>
+                                            </ul>
+                                        </li>
+                                    </ContentTemplate>
+                                </asp:RoleGroup>
+                            </RoleGroups>
+
+                        </asp:LoginView>
+                    </ul>
+                </nav>
+
+            </header>
+        </div>
+
+        <%--  MAIN PAGE CONTENT--%>
+
+       
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+           
+        </asp:ContentPlaceHolder>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+        </asp:ContentPlaceHolder>
+
+
+
+        <div class="wrapper row3">
+
+            <main class="hoc container clear">
+                <asp:ContentPlaceHolder ID="WhiteBackground" runat="server">
+                    <!-- main body -->
+                    <!-- ################################################################################################ -->
+                    <div class="center btmspace-50">
+                        <h2 class="heading">Duis molestie aliquam</h2>
+                        <p>Nisl vitae euismod velit sagittis eu nulla facilisi magna lorem accumsan eleifend est.</p>
+                    </div>
+                    <ul class="nospace group btmspace-50">
+                        <li class="one_third first">
+                            <article class="element">
+                                <figure>
+                                    <img src="images/demo/320x210.png" alt="">
+                                    <figcaption><a class="btn small" href="#">More</a></figcaption>
+                                </figure>
+                                <div class="excerpt">
+                                    <time datetime="2045-06-06T08:15+00:00" data-title="June"><strong>Jun</strong> <em>06</em></time>
+                                    <h6 class="heading"><a href="#">Aliquam sit rutrum</a></h6>
+                                    <p>Cursus massa porta erat ac porttitor finibus velit elit mollis lorem ac&hellip;</p>
+                                </div>
+                            </article>
+                        </li>
+                        <li class="one_third">
+                            <article class="element">
+                                <figure>
+                                    <img src="images/demo/320x210.png" alt="">
+                                    <figcaption><a class="btn small" href="#">More</a></figcaption>
+                                </figure>
+                                <div class="excerpt">
+                                    <time datetime="2045-05-05T08:15+00:00" data-title="May"><strong>May</strong> <em>05</em></time>
+                                    <h6 class="heading"><a href="#">Nec quam bibendum</a></h6>
+                                    <p>Ante in turpis aenean a facilisis metus tincidunt leo vehicula placerat&hellip;</p>
+                                </div>
+                            </article>
+                        </li>
+                        <li class="one_third">
+                            <article class="element">
+                                <figure>
+                                    <img src="images/demo/320x210.png" alt="">
+                                    <figcaption><a class="btn small" href="#">More</a></figcaption>
+                                </figure>
+                                <div class="excerpt">
+                                    <time datetime="2045-04-04T08:15+00:00" data-title="April"><strong>Apr</strong> <em>04</em></time>
+                                    <h6 class="heading"><a href="#">Tincidunt nisl non</a></h6>
+                                    <p>Dui fusce quis sem a ipsum molestie vestibulum duis vitae congue ipsum non&hellip;</p>
+                                </div>
+                            </article>
+                        </li>
+                    </ul>
+                    <p class="center nospace"><a class="btn" href="#">Vestibulum</a></p>
+                    <!-- ################################################################################################ -->
+                    <!-- / main body -->
+                    <div class="clear"></div>
+                </asp:ContentPlaceHolder>
+            </main>
+
+        </div>
+
+
+
+
+
+
+
+        <%--FOOTER--%>
+        <div class="wrapper row4 bgded overlay" style="background-image: url('images/panels.jpg');">
+            <footer id="footer" class="hoc clear">
+
+                <div class="one_half first">
+
+                    <asp:Label ID="FooterAuthorizeLabel" runat="server">As an authorized service center for Hitachi, Makita, Milwaukee, Bosch, DeWalt, Ryobi and Rigid.<br/><br/>
+         Glenn's Electric can get your equipment back in service to minimize your downtime.</asp:Label>
+                </div>
+
+                <div class="one_half">
+                    <h6 class="title">
+
+                        <%--Uncomplete make contact us page and link it --%>
+                        <asp:HyperLink ID="FooterContactUsLink" NavigateUrl="~/ContactUs.aspx" runat="server">Contact Us</asp:HyperLink></h6>
+                    <ul class="nospace linklist contact">
+                        <li>
+
+                            <asp:HyperLink ID="FooterAddressLink" NavigateUrl="https://www.google.com/maps/place/Glenn's+Electric+Motor+%26+Pump+Service+Inc/@41.7412242,-111.8350194,15z/data=!4m5!3m4!1s0x0:0xd510a27fee18b87f!8m2!3d41.7412242!4d-111.8350194" runat="server"><i class="fa fa-map-marker"></i></asp:HyperLink>
+
+                            <asp:Label ID="FooterAddressLabel" runat="server">
+                501 N. Main St. ,  Logan, UT  84321
+                            </asp:Label>
+
+                        </li>
+                        <li>
+                            <%--Uncomplete set up call number on click--%>
+                            <asp:HyperLink ID="FooterPhoneLink" runat="server"><i class="fa fa-phone"></i></asp:HyperLink>
+                            <asp:Label ID="FooterPhoneLabel" runat="server">(435) 752-4178</asp:Label><br />
+
+                            <asp:HyperLink ID="FooterTollFreePhone" runat="server"><i class="fa fa-phone"></i></asp:HyperLink>
+                            <asp:Label ID="FooterTollFreeLabel" runat="server">(800) 281-4178</asp:Label>
+                        </li>
+                        <li>
+                            <%--Uncomplete set up email on click--%>
+                            <asp:HyperLink ID="FooterEmailLink" runat="server"><i class="fa fa-envelope-o"></i></asp:HyperLink>
+                            <%--Uncomplete Find EMAIL --%>
+                            <asp:Label ID="FooterEmailLabel" runat="server">info@domain.com</asp:Label>
+
+                        </li>
+                    </ul>
+                </div>
+
+
+
+
+
+
+            </footer>
+        </div>
+
+        <div class="wrapper row5">
+            <div id="copyright" class="hoc clear">
+
+                <p class="fl_left">This site is © Copyright Glenn's Electric 2009, All Rights Reserved.</p>
+
+            </div>
+        </div>
+
+        <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+
+        <!-- JAVASCRIPTS -->
+        <script src="layout/scripts/jquery.min.js"></script>
+        <script src="layout/scripts/jquery.backtotop.js"></script>
+        <script src="layout/scripts/jquery.mobilemenu.js"></script>
+        <!-- IE9 Placeholder Support -->
+        <script src="layout/scripts/jquery.placeholder.min.js"></script>
+        <!-- / IE9 Placeholder Support -->
+
+
+
+
+    </form>
+</body>
+</html>
